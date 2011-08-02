@@ -1,0 +1,1 @@
+perl ../make_length_hash.pl KEGG_Length /home/comp/jglab/bmuegge/KEGGscripts/v58/GeneLists/*.pep
