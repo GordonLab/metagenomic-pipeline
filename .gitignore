@@ -1,1 +1,8 @@
-*~
+*
+!.gitignore
+!README
+!*.pl
+!Modules
+!Modules/*
+!tools
+!tools/*
