@@ -144,7 +144,7 @@ sub get_merops_summary{
   my(%Family_Count,%Family_Function) = ();
 
   # Get list of all possible families
-  my$number_to_function = "/home/comp/jglab/bmuegge/MEROPS/MEROPS_9.5_numberToFunction.txt";
+  my$number_to_function = "/srv/cgs/data/MEROPS/version9.5/MEROPS_9.5_numberToFunction.txt";
   open(IN,"<$number_to_function") or die "Could not open the file $number_to_function : $!";
   while(my$line=<IN>){
     unless($line=~/^#/){
