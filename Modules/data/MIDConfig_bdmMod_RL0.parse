@@ -1,0 +1,89 @@
+/*
+**
+** MIDConfig.parse
+**
+** This file contains the multiplex sequences used by the Genome Sequence
+** MID library kits, and may contain user-defined sets of multiplex
+** identifiers.  This file is used by the post-run applications to access
+** the defined MID sets.
+**
+** To use your own MID set, you can either copy this file to a local
+** directory, add or edit your own sets (see below), then use the
+** "-mcf" option of the mapper and assembler to specify the MID
+** configuration file.  Or, you can edit and save this file, to have
+** your MID sets accessed by default by the post-run applications.
+**
+** To create a new MID set, copy the examples at the end of the file into
+** the top section, then edit the text as follows:
+**
+**    * The name of the MID set should begin the group (appear above the
+**      open brace '{')
+**
+**    * Each line in the MID set should contain three or four values after
+**      the equals sign:
+**         - A name for the specific MID sequence
+**         - The DNA sequence of the MID
+**         - The number of errors allowed in matching to the sequence
+**         - An optional 3' trimming sequence that may appear at the
+**           end of reads beginning with the MID
+**               * This sequence is used only for trimming, not
+**                 for additional multiplexing
+**
+**    * The syntax of the line must be preserved (the "mid = " beginning, 
+**      the semi-colon at the end of the line, the open and close braces
+**      for the set.
+**
+**
+** Note:  The names below use a combination of uppercase and lowercase
+**        characters, but all matching to the names is insensitive to
+**        case (so, for example "gsmids" will match the MID set below).
+**
+*******************************************************************************
+
+/*
+** User-defined MID sets.
+*/
+
+
+
+
+
+/*
+** IMPORTANT:  DO NOT EDIT BELOW THIS LINE.
+**
+** Genome Sequencer MID sets.
+*/
+
+GSMIDs
+{
+	mid = "MID1", "ACGAGTGCGT", 2;
+	mid = "MID2", "ACGCTCGACA", 2;
+	mid = "MID3", "AGACGCACTC", 2;
+	mid = "MID4", "AGCACTGTAG", 2;
+	mid = "MID5", "ATCAGACACG", 2;
+	mid = "MID6", "ATATCGCGAG", 2;
+	mid = "MID7", "CGTGTCTCTA", 2;
+	mid = "MID8", "CTCGCGTGTC", 2;
+	mid = "MID9", "TAGTATCAGC", 2;
+	mid = "MID10", "TCTCTATGCG", 2;
+	mid = "MID11", "TGATACGTCT", 2;
+	mid = "MID12", "TACTGAGCTA", 2;
+	mid = "MID13", "CATAGTAGTG", 2;
+	mid = "MID14", "CGAGAGATAC", 2;
+}
+
+RLMIDs
+{
+	mid = "RL1", "ACACGACGACT", 0, "AGTCGTGGTGT";
+	mid = "RL2", "ACACGTAGTAT", 0, "ATACTAGGTGT";
+	mid = "RL3", "ACACTACTCGT", 0, "ACGAGTGGTGT";
+	mid = "RL4", "ACGACACGTAT", 0, "ATACGTGGCGT";
+	mid = "RL5", "ACGAGTAGACT", 0, "AGTCTACGCGT";
+	mid = "RL6", "ACGCGTCTAGT", 0, "ACTAGAGGCGT";
+	mid = "RL7", "ACGTACACACT", 0, "AGTGTGTGCGT";
+	mid = "RL8", "ACGTACTGTGT", 0, "ACACAGTGCGT";
+	mid = "RL9", "ACGTAGATCGT", 0, "ACGATCTGCGT";
+	mid = "RL10", "ACTACGTCTCT", 0, "AGAGACGGAGT";
+	mid = "RL11", "ACTATACGAGT", 0, "ACTCGTAGAGT";
+	mid = "RL12", "ACTCGCGTCGT", 0, "ACGACGGGAGT";
+}
