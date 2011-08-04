@@ -210,7 +210,7 @@ fp.close()
 
 
 # Evaluate CD-HIT files
-prog2 = subprocess.Popen('/home/comp/jglab/bmuegge/bin/replicates/scripts/extract-clusters-html.py %s/tmp/cdhit_output_temp.clstr  %s %s/extracted_clusters %s text -i "%s"' % (dirname, filename, dirname, bp_input, filename), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+prog2 = subprocess.Popen('Modules/tools/extract-clusters-html.py %s/tmp/cdhit_output_temp.clstr  %s %s/extracted_clusters %s text -i "%s"' % (dirname, filename, dirname, bp_input, filename), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
 (stdout, stderr) = prog2.communicate()
 
