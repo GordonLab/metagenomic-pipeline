@@ -57,21 +57,21 @@ use constant BLAST_MINALIGN => 0; # minimum alignment length required between qu
 use constant BLAST_MINSCORE => 50; # bit score from blast
 
 # Dereplicator program and paramaters
-use constant EXTRACT_REPLICATES => '/home/comp/jglab/bmuegge/bin/replicates/scripts/extract_replicates.py';
+use constant EXTRACT_REPLICATES => 'Modules/tools/extract_replicates.py';
 use constant REPLICATE_LENGTH => 0;
 use constant REPLICATE_PERCENT => 0.97;   
 use constant REPLICATE_START => 20; # these three numbers are Tanya's standard values
 
 # Fasta de-multiplexing and quality filtering
 use constant MINIMUM_SEQUENCE_LENGTH => 60;
-use constant RL_MID_CONFIG_PARSE => '/home/comp/jglab/bmuegge/Metagenomic_Pipeline/MIDConfig_bdmMod_RL0.parse'; 
+use constant RL_MID_CONFIG_PARSE => 'data/MIDConfig_bdmMod_RL0.parse'; 
 
 # Listener parameters
 use constant WAIT_TIME => 120; # 300 seconds = 5 minutes
 use constant NO_CHANGE_IN_FILE_FOR_X_SECONDS => 60;
 
 # split_run_check and parameters
-use constant SPLIT_RUN_CHECK => '/home/comp/jglab/bmuegge/annotation/split_run_check_combine.pl';
+use constant SPLIT_RUN_CHECK => 'Modules/tools/split_run_check_combine.pl';
 use constant NUM_SEQ => 150;  # I'm setting a low number so searches against large KEGG and COG databases can definitely get done in < 1 hour despite 2Gb RAM load
 
 1;
