@@ -6,3 +6,4 @@
 !Modules/*
 !Modules/tools/*
 !Modules/data/*
+*pyc
