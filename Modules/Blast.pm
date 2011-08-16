@@ -139,7 +139,9 @@ sub make_blast{
     }
   }
 
-  my$blastCommand = "perl ".Constants::SPLIT_RUN_CHECK()." -i $arg{file} -s $arg{suffix} -n $n -p 'blastall -p $arg{program} -d $arg{db} -i INCLUDE_INFILE -b $b -m $m -e $e -v $v";
+  # now using the new version of blast via "legacy_blast.pl" interface. Effective August 10, 2011
+  #my$blastCommand = "perl ".Constants::SPLIT_RUN_CHECK()." -i $arg{file} -s $arg{suffix} -n $n -p 'blastall -p $arg{program} -d $arg{db} -i INCLUDE_INFILE -b $b -m $m -e $e -v $v";
+  my$blastCommand = "perl ".Constants::SPLIT_RUN_CHECK()." -i $arg{file} -s $arg{suffix} -n $n -p 'legacy_blast.pl blastall -p $arg{program} -d $arg{db} -i INCLUDE_INFILE -b $b -m $m -e $e -v $v";
 
   my$extra_args = "";
   $extra_args .= " -Q $arg{Q}" if defined ($arg{Q});
