@@ -377,7 +377,7 @@ sub make_fasta_histogram{
   return $return;
 }
 
-=item $fastaObject->make_fasta_flat_file($jobName);
+=item my$flatFile = $fastaObject->make_fasta_flat_file($jobName);
 
 Subroutine will print to $jobName\_FastaFlatFile.txt a matrix with attributes for each read in the fasta object.
 
@@ -398,6 +398,50 @@ sub make_fasta_flat_file{
   
   return "$jobName\_FastaFlatFile.txt";
 }
+
+
+=item $fastaObject = $fastaObject->add_attributes_from_flat_file($FlatFile)
+
+Intended use is when a job is being reprocesses, and you want to recreate a fasta object from the printed Flat File. This will read in the values in the flat file and assign them to the reads in the object.
+
+Currently, this only acts on the annotation type attributes (dereplication, host, kegg, etc). The sequence based attributes length, too many N's, are determined by sequence. PassFilter will be assigned in the code in analysis.
+
+=cut
+
+sub add_attributes_from_flat_file{
+  my($self,$flatFile) = @_;
+
+  my($replicate,$hostGenome,$KeggBlast,$KeggAnnotated,$MEROPS,$CogBlast,$CogAnnotated,$GutGenome) = "";
+
+  open(IN,"<$flatFile") or die "Could not open the file $flatFile : $!";
+  while(my$line=<IN>){
+    chomp($line);
+    if($line=~/^Header/){
+      my$expected = "Header\tSequenceLength\tTooShort\tTooManyN\tReplicate\tHostGenomeHit\tPassFilter\tKeggBlastHit\tKeggAnnotatedHit\tMeropsHit\tCogBlastHit\tCogAnnotatedHit\tGutGenomeHit";
+      unless($line eq $expected){
+	die "Unexpected format in the Fasta Flat File in method add_attributes_from_flat_file. Has there been a version change?\nExpected header: $expected\nActual header: $line\n";
+      }
+    }
+    else { # data line
+      my($read,$length,$short,$ns,$replicate,$hostGenome,$filter,$keggBlast,$keggAnnotated,$merops,$cogBlast,$cogAnnotated,$gutGenome) = split/\t/,$line;
+      
+      my$readObject = ${$self->get_reads()}{$read};
+      $readObject->set_replicate($replicate);
+      $readObject->set_hostGenomeHit($hostGenome);
+      $readObject->set_keggBlastHit($keggBlast);
+      $readObject->set_keggHit($keggAnnotated);
+      $readObject->set_meropsHit($merops);
+      $readObject->set_cogBlastHit($cogBlast);
+      $readObject->set_cogHit($cogAnnotated);
+      $readObject->set_gutGenomeHit($gutGenome);
+    }
+  }
+  close OUT;
+
+  return $self;
+}
+
+
 
 =back
 
