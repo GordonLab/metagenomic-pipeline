@@ -69,7 +69,7 @@ if($host){
   #parse. For human contaminant removal, require id to be 75% instead of normal 50%
   my%hostBlastHash = Blast->parse_tab_blast_file(file=>$smallHostBlast,fastaObj=>$FastaObject,outfile=>$outfile,id=>'75');
 
-  system ("gzip --best $hostBlast");
+  system ("gzip --best $smallHostBlast");
   # update object
   foreach my$readID (keys %hostBlastHash){
     ${$FastaObject->get_reads()}{">".$readID}-> set_hostGenomeHit(Blast::best_blast_hit(@{$hostBlastHash{$readID}}));
