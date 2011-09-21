@@ -1,5 +1,6 @@
 *
 !.gitignore
+!git-status-tester.sh
 !README
 !*.pl
 !Modules

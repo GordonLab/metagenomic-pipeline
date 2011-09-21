@@ -26,6 +26,8 @@ use Fasta; # Fasta object class. Used to create and manage read objects frome ve
 use MessagesFileHandling; # Package needed for listener scripts, outfile management, etc
 use SFF; # Package needed to split sff files by mid sequence
 
+system('./git-status-tester.sh');
+
 # Initialize variables for input and options
 my($sffString,$fna,$name,$midNumber) = ""; # will contain strings
 my$directory = Cwd->cwd(); # If an argument is passed to option -dir, the output will be written to that directory instead of cwd
