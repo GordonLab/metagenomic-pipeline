@@ -1,7 +1,7 @@
 #!/bin/sh
 # Author: Nick Semenkovich <semenko@alum.mit.edu>
 
-git remote update 2>&1 >/dev/null
+git remote update >/dev/null 2>&1
 
 gitstatus=`git log master..origin/master`
 
