@@ -1,1 +1,4 @@
 This directory holds data that the Metagenomic Pipeline depends on.
+
+MIDConfig_bdmMod_RL0.parse = Standard 12-barcode MID parsing (for splitting SFF files)
+MIDConfig_GS_RL24_ALE.parse = Expanded 24-barcode library (talk to Alejandro)
