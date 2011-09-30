@@ -1,6 +1,11 @@
 #!/bin/sh
 # Author: Nick Semenkovich <semenko@alum.mit.edu>
 
+# Move to our directory, if from a relative path.
+SCRIPT=$(readlink -f "$0")
+SCRIPTPATH=`dirname "$SCRIPT"`
+cd $SCRIPTPATH
+
 git remote update >/dev/null 2>&1
 
 gitstatus=`git log master..origin/master`

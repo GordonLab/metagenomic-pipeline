@@ -15,9 +15,10 @@ sub version{ return "2.0";}
 
 use Getopt::Long;   # To capture options from command line
 use Cwd;            # Gets current working directory, which can be optionally overridden with new directory for output
+use FindBin;
 
 # Invoke the various modules and packages that will be used
-use lib './Modules'; # Packages and Object classes are stored in this directory
+use lib "$FindBin::Bin/Modules"; # Packages and Object classes are stored in this directory
 use Annotation; # contains counting routines for KEGG and COG summarization
 use Blast; # Generate and parse blast jobs, and assign annotation
 use Constants; # contains constant parameters
@@ -26,7 +27,7 @@ use Fasta; # Fasta object class. Used to create and manage read objects frome ve
 use MessagesFileHandling; # Package needed for listener scripts, outfile management, etc
 use SFF; # Package needed to split sff files by mid sequence
 
-system('./.git-status-tester.sh');
+system("$FindBin::Bin/.git-status-tester.sh");
 
 # Initialize variables for input and options
 my($sffString,$fna,$name,$midNumber) = ""; # will contain strings
